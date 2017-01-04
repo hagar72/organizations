@@ -1,21 +1,3 @@
--- phpMyAdmin SQL Dump
--- version 4.5.3.1
--- http://www.phpmyadmin.net
---
--- Host: localhost
--- Generation Time: Jan 04, 2017 at 06:59 PM
--- Server version: 5.7.16-0ubuntu0.16.04.1
--- PHP Version: 5.6.29-1+deb.sury.org~xenial+1
-
-SET SQL_MODE = "NO_AUTO_VALUE_ON_ZERO";
-SET time_zone = "+00:00";
-
-
-/*!40101 SET @OLD_CHARACTER_SET_CLIENT=@@CHARACTER_SET_CLIENT */;
-/*!40101 SET @OLD_CHARACTER_SET_RESULTS=@@CHARACTER_SET_RESULTS */;
-/*!40101 SET @OLD_COLLATION_CONNECTION=@@COLLATION_CONNECTION */;
-/*!40101 SET NAMES utf8mb4 */;
-
 --
 -- Database: `organizations`
 --
@@ -115,9 +97,9 @@ INSERT INTO `oauth2_refresh_tokens` (`id`, `client_id`, `user_id`, `token`, `exp
 
 CREATE TABLE `organizations` (
   `organization_id` int(11) NOT NULL,
-  `name` varchar(100) NOT NULL,
+  `name` varchar(100) COLLATE utf8_unicode_ci NOT NULL,
   `account_created_date` timestamp NULL DEFAULT CURRENT_TIMESTAMP
-) ENGINE=InnoDB DEFAULT CHARSET=latin1;
+) ENGINE=InnoDB DEFAULT CHARSET=utf8 COLLATE=utf8_unicode_ci;
 
 --
 -- Dumping data for table `organizations`
@@ -240,7 +222,7 @@ ALTER TABLE `oauth2_refresh_tokens`
 -- AUTO_INCREMENT for table `organizations`
 --
 ALTER TABLE `organizations`
-  MODIFY `organization_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000004;
+  MODIFY `organization_id` int(11) NOT NULL AUTO_INCREMENT, AUTO_INCREMENT=1000003;
 --
 -- AUTO_INCREMENT for table `users`
 --
@@ -270,7 +252,3 @@ ALTER TABLE `oauth2_auth_codes`
 ALTER TABLE `oauth2_refresh_tokens`
   ADD CONSTRAINT `FK_D394478C19EB6921` FOREIGN KEY (`client_id`) REFERENCES `oauth2_clients` (`id`),
   ADD CONSTRAINT `FK_D394478CA76ED395` FOREIGN KEY (`user_id`) REFERENCES `users` (`id`);
-
-/*!40101 SET CHARACTER_SET_CLIENT=@OLD_CHARACTER_SET_CLIENT */;
-/*!40101 SET CHARACTER_SET_RESULTS=@OLD_CHARACTER_SET_RESULTS */;
-/*!40101 SET COLLATION_CONNECTION=@OLD_COLLATION_CONNECTION */;

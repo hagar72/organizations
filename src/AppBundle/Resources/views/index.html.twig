@@ -1,0 +1,109 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Javascript Fixes{% endblock %}
+{% block body %}
+    <h2>This page has the java script fixes and functions implementations</h2>
+    <span>To view the code; check this file path src/AppBundle/Resources/views/index.html.twig or view page source</span>
+
+    <div id="a">
+        <div id="b"></div>
+    </div>
+{% endblock %}
+
+
+{% block javascripts %}
+    <script type="text/javascript">
+        /**
+         * Append children
+         *
+         * @Solution: the "allDivs" variable will be updated by the new divs added to it so the length will keep increasing and it cause an infinite loop
+         * so I've saved the length before changing in another variable
+         */
+        function appendChildren() {
+            var allDivs = document.getElementsByTagName("div");
+            var length = allDivs.length;
+            for (var i = 0; i < length; i++) {
+                var newDiv = document.createElement("div");
+                allDivs[i].appendChild(newDiv);
+            }
+        }
+        appendChildren();
+
+        /**********************************************/
+        /**
+         * Scope varialbe
+         *
+         * @question: I'm not sure about the issue actualy it prints the number "6" five times as presented in the PDF
+         */
+        for (var i = 1; i < 6; i++) {
+            setTimeout(function () {
+                console.log(i);
+            }, 1000);
+        }
+
+        /**********************************************/
+        /**
+         * Global scope 
+         *
+         * @Solution: Remove the 2nd difinition of the function and have getFullName function return the full name directly
+         */
+        var person = {
+            firstName: 'John',
+            lastName: 'Doe',
+            getFullNameFunction: function () {
+                return this.firstName + ' ' + this.lastName;
+            }
+        };
+        console.log(person.getFullNameFunction());
+
+
+        /**********************************************/
+        /**
+         * Sum
+         */
+        function sum(array) {
+            return array.reduce(function (prev, current) {
+                return prev + current;
+            }, 0);
+        }
+        console.log(sum([2, 5, 3, 4, 7, 9]));
+
+        /**********************************************/
+        /**
+         * Unique values
+         */
+        function getUniqueValues(array) {
+            var uniqueValues = {};
+
+            array.forEach(function (value) {
+                uniqueValues[value] = uniqueValues[value] ? uniqueValues[value] + 1 : 1;
+            });
+            return uniqueValues;
+        }
+        console.log(getUniqueValues([2, 2, 3, 4, 7, 4, 9, 6]));
+        /**********************************************/
+        /**
+         * Palindrome 
+         */
+        function getPalindrome(string) {
+            var reverseString = string.split("").reverse().join("");
+            return (string == reverseString) ? true : false;
+        }
+        console.log('Palindrome: ' + getPalindrome('anna'));
+        console.log('Not Palindrome: ' + getPalindrome('hour'));
+
+        /**********************************************/
+        /**
+         * Counts 
+         */
+        function getCounts(array) {
+            var counts = {};
+
+            array.forEach(function (value) {
+                counts[value] = counts[value] ? counts[value] + 1 : 1;
+            });
+            return counts;
+        }
+        console.log(getCounts(['apple', 'orange', 'apple', 'mango', 'pineapple', 'watermelon', 'mango', 'apple']));
+    </script>
+{% endblock %}

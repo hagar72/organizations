@@ -1,0 +1,239 @@
+{
+	"variables": [],
+	"info": {
+		"name": "Organizations",
+		"_postman_id": "d145a062-af7c-9aba-93d0-26b590b1d3e4",
+		"description": "",
+		"schema": "https://schema.getpostman.com/json/collection/v2.0.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "Organizations",
+			"description": "Organizations Restful APIs",
+			"item": [
+				{
+					"name": "List organizations",
+					"request": {
+						"url": "{{serverUrl}}/api/organizations",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "List organizations"
+					},
+					"response": []
+				},
+				{
+					"name": "Create organization",
+					"request": {
+						"url": "{{serverUrl}}/api/organizations",
+						"method": "POST",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "Sleighdogs",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Create new organization"
+					},
+					"response": []
+				},
+				{
+					"name": "Get organization",
+					"request": {
+						"url": "{{serverUrl}}/api/organizations/{{id}}",
+						"method": "GET",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "manufacture",
+									"value": "BMW",
+									"type": "text",
+									"enabled": true
+								},
+								{
+									"key": "model",
+									"value": "name",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Get organization by ID"
+					},
+					"response": []
+				},
+				{
+					"name": "Update organization",
+					"request": {
+						"url": "{{serverUrl}}/api/organizations/{{id}}",
+						"method": "PUT",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {
+							"mode": "urlencoded",
+							"urlencoded": [
+								{
+									"key": "name",
+									"value": "xxx",
+									"type": "text",
+									"enabled": true
+								}
+							]
+						},
+						"description": "Update organization"
+					},
+					"response": []
+				},
+				{
+					"name": "Delete organization",
+					"request": {
+						"url": "{{serverUrl}}/api/organizations/{{id}}",
+						"method": "DELETE",
+						"header": [
+							{
+								"key": "Accept",
+								"value": "application/json",
+								"description": ""
+							},
+							{
+								"key": "Content-Type",
+								"value": "application/x-www-form-urlencoded",
+								"description": ""
+							},
+							{
+								"key": "Authorization",
+								"value": "Bearer {{token}}",
+								"description": ""
+							}
+						],
+						"body": {},
+						"description": "Delete organization"
+					},
+					"response": []
+				}
+			]
+		},
+		{
+			"name": "Get Token",
+			"request": {
+				"url": "{{serverUrl}}/oauth/v2/token",
+				"method": "POST",
+				"header": [
+					{
+						"key": "Accept",
+						"value": "application/json",
+						"description": ""
+					}
+				],
+				"body": {
+					"mode": "urlencoded",
+					"urlencoded": [
+						{
+							"key": "grant_type",
+							"value": "{{grant_type}}",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "client_id",
+							"value": "{{client_id}}",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "client_secret",
+							"value": "{{client_secret}}",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "username",
+							"value": "{{username}}",
+							"type": "text",
+							"enabled": true
+						},
+						{
+							"key": "password",
+							"value": "{{password}}",
+							"type": "text",
+							"enabled": true
+						}
+					]
+				},
+				"description": "Get authentication"
+			},
+			"response": []
+		}
+	]
+}
